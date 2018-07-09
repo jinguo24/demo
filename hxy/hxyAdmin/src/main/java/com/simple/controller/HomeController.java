@@ -41,16 +41,21 @@ public class HomeController {
         if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {
             throw new SystemException(ErrorCode.LOGIN_USER_OR_PWD_ERROR);
         }
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-        subject.login(token);
-        List<SysRole> roleList = sysRoleService.findRoleByUserId(user.getId());
-        if (null != roleList && roleList.size() > 0) {
-	        List<SysPermission> permissionList = sysPermissionService
-	                .findPermissionByRoleIds(roleList.stream().map(SysRole::getId).collect(Collectors.toList()));
-	//			user.setRole(roleList);
-	        user.setPermission(permissionList);
+        try {
+        	   Subject subject = SecurityUtils.getSubject();
+               UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
+               subject.login(token);
+               List<SysRole> roleList = sysRoleService.findRoleByUserId(user.getId());
+               if (null != roleList && roleList.size() > 0) {
+       	        List<SysPermission> permissionList = sysPermissionService
+       	                .findPermissionByRoleIds(roleList.stream().map(SysRole::getId).collect(Collectors.toList()));
+       			user.setRole(roleList);
+       	        user.setPermission(permissionList);
+               }
+        }catch(Exception e) {
+        	 return new ResultData(ResultData.ERROR,"用户名或者密码错误");
         }
+     
         return new ResultData();
 
     }

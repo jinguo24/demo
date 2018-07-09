@@ -20,7 +20,7 @@ import com.simple.service.SysPermissionService;
 /**
  * Created by yangqj on 2017/4/30.
  */
-//@Service
+@Service
 public class ShiroService {
     @Autowired
     private ShiroFilterFactoryBean shiroFilterFactoryBean;
@@ -49,7 +49,8 @@ public class ShiroService {
 //                filterChainDefinitionMap.put(resources.getUrl(),permission);
 //            }
 //        }
-        filterChainDefinitionMap.put("/**", "authc");
+//        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");
         return filterChainDefinitionMap;
     }
 

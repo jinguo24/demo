@@ -24,7 +24,7 @@ import com.simple.shiro.MyShiroRealm;
 /**
  * Created by yangqj on 2017/4/23.
  */
-//@Configuration
+@Configuration
 public class ShiroConfig {
     @Autowired(required = false)
     private SysPermissionService resourcesService;
@@ -101,7 +101,7 @@ public class ShiroConfig {
 //                filterChainDefinitionMap.put(resources.getUrl(),permission);
 //            }
 //        }
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");
 
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

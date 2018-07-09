@@ -9,10 +9,11 @@
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 		<result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
 		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="is_admin" jdbcType="INTEGER" property="isAdmin" />
 	</resultMap>
 	
 	<sql id="allColumns">
-	    `id`,`username`,`name`,`password`,`create_time`,`last_login_time`,`status` 
+	    `id`,`username`,`name`,`password`,`create_time`,`last_login_time`,`status`,`is_admin` 
 	</sql>
 
 	<sql id="dynamicWhereConditions">
@@ -24,6 +25,7 @@
 		<if test=" null != createTime "> and `create_time` = #{createTime} </if>    
 		<if test=" null != lastLoginTime "> and `last_login_time` = #{lastLoginTime} </if>    
 		<if test=" null != status "> and `status` = #{status} </if>    
+		<if test=" null != isAdmin "> and `is_admin` = #{isAdmin} </if>    
 		<if test=" null != ids ">
 		 	and id in  
 			<foreach collection="ids" index="index" item="idItem" open="(" separator="," close=")">

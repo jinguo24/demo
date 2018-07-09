@@ -37,6 +37,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public void saveOrUpdate(UserInfo record) {
         if (record.getId() == null) {
             record.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+            record.setCreateTime(new Date());
             userInfoMapper.insert(record);
         } else {
             userInfoMapper.updateByPrimaryKeySelective(record);

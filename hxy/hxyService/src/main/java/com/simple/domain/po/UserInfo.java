@@ -15,7 +15,7 @@ public class UserInfo extends BaseModel {
 	@io.swagger.annotations.ApiModelProperty(value="用户名",name="username")
 	private String username;
 	/*url描述**/
-	@io.swagger.annotations.ApiModelProperty(value="url描述",name="name")
+	@io.swagger.annotations.ApiModelProperty(value="登录名",name="name")
 	private String name;
 	/*密码**/
 	@io.swagger.annotations.ApiModelProperty(value="密码",name="password")
@@ -29,6 +29,9 @@ public class UserInfo extends BaseModel {
 	/*1:有效，0:禁止登录**/
 	@io.swagger.annotations.ApiModelProperty(value="1:有效，0:禁止登录",name="status")
 	private Integer status;
+	/*0 不是超管 1是超管**/
+	@io.swagger.annotations.ApiModelProperty(value="0 不是超管 1是超管",name="isAdmin")
+	private Integer isAdmin;
     //该用户所有的角色
     @Transient
     private List<SysRole> role;
@@ -71,6 +74,12 @@ public class UserInfo extends BaseModel {
 	public void setStatus(Integer _status) {
 		status = _status;
 	}
+	public Integer  getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(Integer _isAdmin) {
+		isAdmin = _isAdmin;
+	}
     public List<SysRole> getRole() {
         return role;
     }
@@ -98,6 +107,7 @@ public class UserInfo extends BaseModel {
 			,CreateTime_ASC("`createTime` ASC"),CreateTime_DESC("`createTime` DESC")
 			,LastLoginTime_ASC("`lastLoginTime` ASC"),LastLoginTime_DESC("`lastLoginTime` DESC")
 			,Status_ASC("`status` ASC"),Status_DESC("`status` DESC")
+			,IsAdmin_ASC("`isAdmin` ASC"),IsAdmin_DESC("`isAdmin` DESC")
 	;
 		private String value;
 		Field(String value){

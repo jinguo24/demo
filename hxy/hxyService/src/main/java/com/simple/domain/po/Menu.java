@@ -20,6 +20,9 @@ public class Menu extends BaseModel {
 	/*0 失效 1有效**/
 	@io.swagger.annotations.ApiModelProperty(value="0 失效 1有效",name="status")
 	private Integer status;
+	/*是否跳转新页面  0:不跳转  1.跳转**/
+	@io.swagger.annotations.ApiModelProperty(value="是否跳转新页面  0:不跳转  1.跳转",name="isBlank")
+	private Integer isBlank;
 	/*父id**/
 	@io.swagger.annotations.ApiModelProperty(value="父id",name="parentId")
 	private String parentId;
@@ -43,6 +46,16 @@ public class Menu extends BaseModel {
 	/***/
 	@io.swagger.annotations.ApiModelProperty(value="",name="updateBy")
 	private String updateBy;
+	
+	@Transient
+	private transient List<Menu> subMenus;
+	
+	public List<Menu> getSubMenus() {
+		return subMenus;
+	}
+	public void setSubMenus(List<Menu> subMenus) {
+		this.subMenus = subMenus;
+	}
 	public String  getName() {
 		return name;
 	}
@@ -60,6 +73,12 @@ public class Menu extends BaseModel {
 	}
 	public void setStatus(Integer _status) {
 		status = _status;
+	}
+	public Integer  getIsBlank() {
+		return isBlank;
+	}
+	public void setIsBlank(Integer _isBlank) {
+		isBlank = _isBlank;
 	}
 	public String  getParentId() {
 		return parentId;
@@ -124,6 +143,7 @@ public class Menu extends BaseModel {
 			,Name_ASC("`name` ASC"),Name_DESC("`name` DESC")
 			,SortNum_ASC("`sortNum` ASC"),SortNum_DESC("`sortNum` DESC")
 			,Status_ASC("`status` ASC"),Status_DESC("`status` DESC")
+			,IsBlank_ASC("`isBlank` ASC"),IsBlank_DESC("`isBlank` DESC")
 			,ParentId_ASC("`parentId` ASC"),ParentId_DESC("`parentId` DESC")
 			,CreateTime_ASC("`createTime` ASC"),CreateTime_DESC("`createTime` DESC")
 			,CreateBy_ASC("`createBy` ASC"),CreateBy_DESC("`createBy` DESC")

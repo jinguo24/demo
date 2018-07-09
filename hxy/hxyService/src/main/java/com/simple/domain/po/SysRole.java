@@ -14,8 +14,8 @@ public class SysRole extends BaseModel {
 	/*角色名称**/
 	@io.swagger.annotations.ApiModelProperty(value="角色名称",name="name")
 	private String name;
-	/*是否可用**/
-	@io.swagger.annotations.ApiModelProperty(value="是否可用",name="available")
+	/*是否可用 0可用 1不可用**/
+	@io.swagger.annotations.ApiModelProperty(value="是否可用 0可用 1不可用",name="available")
 	private String available;
 	/*角色描述**/
 	@io.swagger.annotations.ApiModelProperty(value="角色描述",name="description")

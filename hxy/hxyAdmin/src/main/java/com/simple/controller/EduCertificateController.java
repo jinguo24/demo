@@ -2,19 +2,20 @@ package com.simple.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
 import com.simple.common.rest.Result;
 import com.simple.common.rest.ResultData;
-import com.simple.annotation.HoldBegin;
-import com.simple.annotation.HoldEnd;
 import com.simple.domain.po.EduCertificate;
 import com.simple.service.EduCertificateService;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-
 @RestController
 @RequestMapping("eduCertificate")
 public class EduCertificateController extends BaseController

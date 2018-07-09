@@ -2,21 +2,26 @@ package com.simple.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
 import com.simple.common.rest.Result;
 import com.simple.common.rest.ResultData;
-import com.simple.annotation.HoldBegin;
-import com.simple.annotation.HoldEnd;
 import com.simple.domain.po.Suggestion;
 import com.simple.service.SuggestionService;
+
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("suggestion")
+@Api(description="投诉建议相关接口")
 public class SuggestionController extends BaseController
 {
 	@Autowired
@@ -35,6 +40,7 @@ public class SuggestionController extends BaseController
     }
 
     @PostMapping("add")
+    @ApiOperation("新增投诉建议接口")
     public ResultData add(@ModelAttribute Suggestion suggestion) {
         //Assert.notNull(suggestion.getName(), "角色名不能为空");
         //Assert.isTrue(!checkUnique(sysRole.getName(), null), "重复的角色名");
